@@ -18,6 +18,7 @@ from mlflow.store.artifact.sftp_artifact_repo import SFTPArtifactRepository
 from mlflow.store.artifact.uc_volume_artifact_repo import uc_volume_artifact_repo_factory
 from mlflow.utils.plugins import get_entry_points
 from mlflow.utils.uri import get_uri_scheme, is_uc_volumes_uri
+from arangodb_mlflow.mlflow_custom_artifacts import StorageSidecarArtifactRepository
 
 
 class ArtifactRepositoryRegistry:
@@ -98,6 +99,7 @@ _artifact_repository_registry = ArtifactRepositoryRegistry()
 _artifact_repository_registry.register("", LocalArtifactRepository)
 _artifact_repository_registry.register("file", LocalArtifactRepository)
 _artifact_repository_registry.register("s3", S3ArtifactRepository)
+_artifact_repository_registry.register("adbstorage", StorageSidecarArtifactRepository)
 _artifact_repository_registry.register("r2", R2ArtifactRepository)
 _artifact_repository_registry.register("gs", GCSArtifactRepository)
 _artifact_repository_registry.register("wasbs", AzureBlobArtifactRepository)
