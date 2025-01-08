@@ -268,7 +268,10 @@ def _run_server(  # noqa: D417
     if registry_store_uri:
         env_map[REGISTRY_STORE_URI_ENV_VAR] = registry_store_uri
     if default_artifact_root:
+        print("Using default artifact root path %s" % default_artifact_root)
         env_map[ARTIFACT_ROOT_ENV_VAR] = default_artifact_root
+    else:
+        print("No default artifact root path set")
     if serve_artifacts:
         env_map[SERVE_ARTIFACTS_ENV_VAR] = "true"
     if artifacts_only:
